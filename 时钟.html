@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style>
+			img{
+				position: relative;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/0.png" />
+		<img src="img/0.png" />
+		<img src="img/fuh.png" />
+		<img src="img/0.png" />
+		<img src="img/0.png" />
+		<img src="img/fuh.png" />
+		<img src="img/0.png" />
+		<img src="img/0.png" />
+	</body>
+<script>
+
+function getTimes(){
+	var date = new Date();
+	var Hours = date.getHours();
+	var Min = date.getMinutes();
+	var Sec = date.getSeconds();
+	var str = add0(Hours)+":"+add0(Min)+":"+add0(Sec);
+
+	return str;
+}
+
+function add0(n){
+	return n < 10?'0'+n:n;
+}
+var Img = document.getElementsByTagName('img');
+setInterval(function(){
+	setTime();
+},1000);
+
+
+
+
+setTime();
+
+
+function setTime(){
+	var times = getTimes();
+	var onOff = true;
+	for(var i = 0;i<times.length;i++){
+		if(times.charAt(i) === ':'){
+			Img[i].src = 'img/fuh.png';
+			setTimeout(function(){
+				Img[2].src = 'img/nfh.png';
+				Img[5].src = 'img/nfh.png';
+			},500);
+		}else{
+			if(Img[i].style.top = '-210px'){
+				Img[i].style.transition = 0; 
+				Img[i].style.top = 0; 
+			}
+			Img[i].src = 'img/'+times.charAt(i)+'.png';
+			
+		}
+	}
+}
+
+
+</script>
+</html>
+     
