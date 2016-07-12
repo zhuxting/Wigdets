@@ -1,0 +1,179 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+body{
+	background: #E6E6FA;
+	font-family: 微软雅黑;
+	font-size: 16px;
+
+}
+#box{
+	width: 800px;
+	height: 450px;
+	border:1px solid #066; 
+	background:#FFF; 
+	margin:20px auto 0;
+	position:relative; 
+	top:0; 
+	left:0;
+}
+#fraction { 
+	width:130px; 
+	border:1px solid #066; 
+	position:relative; 
+	top:-1px; 
+	left:-152px; 
+	background:#FFC; 
+	padding:10px; 
+}
+#fraction p { 
+	margin:0; 
+	font-family:微软雅黑; 
+	font-size:16px; 
+	line-height:30px; 
+}
+#alert { 
+	text-align:center; 
+}
+#qq{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top:0px;
+	overflow: hidden;
+}
+#qq img{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: 0px;
+	top:-25px;
+}
+</style>
+</head>
+<body>
+<div id="alert">
+	<h2>你的鼠标有多快？</h2>
+	<p>游戏说明：点击“开始游戏”，随机掉下QQ表情，点中它，千万别让它掉下去！！</p>
+	<input type="button" value="开始游戏" id="btn" />
+	<input type="button" value="暂停游戏" id="stop" />
+</div>
+
+<div id="box">
+	<div id="fraction">
+	  	<p>得分：0 分</p>
+	  	<p>失分：0 分</p>
+	</div>
+	<div id="qq">
+		<img src="./img/30.gif" />
+	</div>
+</div>
+</body>
+<script src='common.js'></script>
+<script>
+var btn = $('#btn');
+var stop = $('#stop');
+var Img = $('img',$('#qq'))[0];
+var box = $('#box');
+var score = $('p',$('#fraction'));
+var speed = 1;
+var loseScore = 0;
+var winScore = 0;
+var onbtn = true;//控制暂停游戏开关
+stop.disabled = true;
+//开始
+btn.onclick = function(){
+	this.disabled = true;
+	stop.disabled = false;
+	if(onbtn){
+		fn();
+	}else{
+		doMove(Img,'top',430,speed,function(){
+			shake(box,'top',10,function(){
+				loseScore++;
+				score[1].innerHTML = '失分：'+loseScore+'分';
+				Img.style.top = '-20px';
+				if (result()) fn();
+			})
+		})
+		onbtn = true;
+	}
+	Img.onmousedown = function(){
+		if(this.onOff) return;
+		//Img[i].index = i;
+		this.onOff = true;
+		clearInterval(this.timer);//?
+		this.timer = null;
+		shake(this,'left',10,function(){
+			winScore++;
+			score[0].innerHTML = '得分：'+winScore+'分';
+			Img.onOff = false;
+			Img.style.top = '-25px';
+			if (result()) fn();
+		})
+	}
+}
+
+function fn(){
+	//left随机出现
+	Img.style.left = Math.round(Math.random()*780)+'px';
+	//图片随机选取
+	//round四舍五入
+	Img.src = './img/'+Math.floor(Math.random()*18)+'.gif';
+	speed+=0.5;
+	//没点中图片时，图片走到430，box shake
+	doMove(Img,'top',430,speed,function(){
+		shake(box,'top',10,function(){
+			loseScore++;
+			score[1].innerHTML = '失分：'+loseScore+'分';
+			Img.style.top = '-20px';
+			if (result()) fn();//如果为真，继续执行fn
+			//为假，返回false，执行reset()
+		})
+	})
+}
+	
+//点中图片，图片shake
+Img.parentNode.onmousedown = function(){//取消父级的默认行为
+	return false;
+}
+
+//分数
+function result(){
+	if(winScore>=8){
+		alert('你赢了！')
+		reset();
+		return false;
+	}
+	if(loseScore>=8){
+		alert('你输了！')
+		reset();
+		return false;
+	}
+	return true;
+}
+//重新开始
+function reset(){
+	speed = 1;
+	loseScore = 0;
+	winScore = 0;
+	score[0].innerHTML = '得分：0分';
+	score[1].innerHTML = '得分：0分';
+	btn.disabled = false;
+}
+//暂停
+ stop.onclick = function stop(){
+ 	onbtn = false;
+ 	clearInterval(Img.timer);
+ 	Img.onmousedown = null;
+ 	Img.timer = null;
+ 	btn.disabled = false;
+ 	this.disabled = true;
+ }
+</script>
+</html>
+     
+ 
