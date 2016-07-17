@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>四个方向变换</title>
+<style>
+
+#oDiv{
+	width:550px;
+	height:550px;
+	position:relative;
+	background:url(4.jpg) no-repeat 0 0;
+}
+#oDiv div{
+	width:55px;
+	height:55px;
+	background:url(1.jpg) no-repeat 0 0;
+	position:absolute;
+	left:0;
+	top:0;
+	opacity:0.8;
+	transition:1s;
+}
+</style>
+</head>
+
+<body>
+
+
+<div id = "oDiv">
+
+</div>
+</body>
+<script>
+function $(id){
+	return document.getElementById(id);
+}
+
+var oDiv = $("oDiv");
+var oBtn = $("btn");
+
+var l = 0;
+var t = 0;
+var arr = ["yellow","dark","pink"]
+var str ="";
+
+
+for(i=0;i<100;i++){
+	l = (i%10)*55;
+	t = Math.floor(i/10)*55;
+	str += "<div style='background:"+arr[i%3]+";left:"+l+"px;top:"+t+"px;'></div>"
+	//str += "<div style='background-position:"+-l+"px "+-t+"px;left:"+l+"px;top:"+t+"px'></div>"
+}	
+	oDiv.innerHTML = str;
+
+var oDiv1 = oDiv.getElementsByTagName("div");
+
+for(var i = 0;i<oDiv1.length;i++){
+	oDiv1[i].onmouseover = function(){
+		this.style.opacity=0;
+		//this.style.cssText = "transform:scale(0);opacity:0"; //bug
+	}
+		
+}
+
+
+</script>
+
+</html>
