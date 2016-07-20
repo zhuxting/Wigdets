@@ -1,0 +1,42 @@
+body{
+	margin: 0;
+	}
+#Box{
+	width: 200px;
+	height: 300px;
+	border: 5px solid #000;
+	position:relative;
+	top:100;
+	left: 100;
+}
+#div{
+	width:50px;
+	height: 50px;
+	background: pink;
+	position:absolute;
+	cursor: move;
+	top:0;
+	left: 0;
+	opacity: .5;
+}
+.img1{
+	width: 200px;
+	height: 300px;
+}
+#Box2{
+	width:150px;
+	height:150px;
+	position:absolute;
+	left: 310px;
+	top: 0px;
+	border:1px solid pink;
+	overflow:hidden;
+}
+.img2{
+	width:600px;
+	height:900px;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
