@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+body{
+	overflow: hidden;
+	background: url(bg.jpg);
+}
+#a1{
+	position: absolute;
+	top: 667px;
+	left: 0px;
+}
+#a2{
+	position: absolute;
+	top: 667px;
+	left: -700px;
+}
+#a3{
+	position: absolute;
+	top: 667px;
+	left: 1300px;
+}
+</style>
+</head>
+<body>
+<img src="g1.jpg" id='a1'>
+<img src="2.jpg" id='a2'>
+<img src="3.jpg" id='a3'>
+</body>
+<script src='common.js'></script>
+<script>
+var img1 = $('#a1');
+var img2 = $('#a2');
+var img3 = $('#a3');
+
+var imgcenter = (document.documentElement.clientWidth - img1.offsetWidth)/2-100;
+doMove(img1,'top',0,80);
+doMove(img2,'top',0,50);
+doMove(img3,'top',70,45);
+
+doMove2(img2,'left',150,60);
+doMove2(img3,'left',900,25);
+img1.style.left = imgcenter+'px';
+
+document.onmousemove = function(ev){
+	var e = ev||event;
+	//鼠标-可视区域/2
+	img1.style.left = imgcenter +(e.clientX - document.documentElement.clientWidth/2)*0.1+'px';
+	img1.style.top = -(e.clientY - document.documentElement.clientHeight/2)*0.1+'px';
+	img2.style.left = 150+(e.clientX - document.documentElement.clientHeight/2)*0.05+'px';
+	img2.style.top = -(e.clientY - document.documentElement.clientHeight/2)*0.05+'px';
+	img3.style.left = 900+(e.clientX - document.documentElement.clientHeight/2)*0.05+'px';
+	img3.style.top = 70-(e.clientY - document.documentElement.clientHeight/2)*0.05+'px';
+
+}
+</script>
+</html>
+     
+ 
