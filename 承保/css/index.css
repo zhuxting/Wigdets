@@ -1,0 +1,151 @@
+body{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft YaHei"
+}
+a{
+	text-decoration:none;
+	color:#fff;
+	font-size: 14px;
+}
+li{
+	list-style: none;
+}
+li,ul{
+	padding: 0;
+	margin:0;
+}
+.nav{
+	-border:1px solid red;
+	height: 60px;
+	background: #2466a8;
+	color: #fff;
+	z-index: 100;
+}
+.logo{
+	-border:1px solid red;
+	height: 60px;
+	width: 94px;
+	background: url(../img/logo01.png) no-repeat;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.nav-ul1{
+	float: left;
+	height: 60px;
+}
+.nav-ul1 h3{
+	padding-left: 105px;/*
+	display: inline-block;
+	margin: auto;*/
+}
+.nav-ul2{
+	right:0;
+	top: 0;
+}
+.nav-ul3{
+	right:0;
+	top: 30px;
+}
+.nav-ul2,.nav-ul3{
+	position: absolute;
+	margin: 0 16px;
+	height: 30px;
+	line-height: 30px;
+}
+.nav-ul3 li{
+	float: left;
+	margin-left: 12px;
+}
+.nav-ul3 li span{
+	width: 19px;
+    height: 16px;
+    display: inline-block;
+    background: url(../img/ico.png) no-repeat;
+    position: relative;
+    left: -2px;
+    top: 2px;
+}
+.nav-ul3 li .ico01{background-position:0px 0px;}
+.nav-ul3 li .ico02{background-position:0px -18px;}
+.nav-ul3 li .ico03{background-position:0px -34px;}
+.nav-ul3 li .ico04{background-position:-34px 0px;}
+.nav-ul3 li .ico05{background-position:-34px -18px;}
+.nav-ul3 li .ico06{background-position:-34px -34px;}
+#menu{
+	border-right: 3px solid #d4d4d4;
+	font-size: 9px;
+	-width: 180px;
+	width: 10%;
+	height: 100%;
+	background: #247fdc;
+	color: #fff;
+	position: absolute;
+	top: 0px;
+	z-index: -100;
+}
+#menu li{
+	border: 1px solid red;
+	height: 26px;
+	line-height: 26px;
+}
+#menu li:nth-of-type(1){
+	margin-top: 60px;
+}
+#menu span{
+	float: right;
+	padding-right: 10px;
+}
+.select-bar{
+	width: 90%;
+	height: 26px;
+	background: #fff2dd;
+	float: right;
+}
+.select-bar span{
+	color: #e58e00;
+	padding-left: 16px;
+	padding-right: 3px;
+}
+.select-bar select{
+	margin:-2;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius :3px;
+	border:1px solid #ffdfaa;
+}
+.main-bar,.main-content{
+	color:#747474;
+	float: right;
+	width: 90%;
+	border-bottom: 1px solid #aeaeae;
+}
+.main-bar{
+	-border: 1px solid blue;
+	background: #e9e9e9;
+	width: 90%;
+	height:24px; 
+	text-align:justify;
+	text-align-last:justify;
+}
+.main-bar p{
+	/*border: 1px solid red;
+	float: left;
+	margin:0;
+	line-height: 24px;
+	padding: 0 16px;*/
+	margin: 0 16px; 
+	display:inline-block;
+	height:22px; 
+	line-height:23px; 
+	border:1px solid #428cc8; 
+	border-radius:3px; 
+	background-color:#fefefe; 
+
+}
+.main-content form{
+	float: left;
+}
